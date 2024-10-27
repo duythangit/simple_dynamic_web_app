@@ -201,3 +201,7 @@ app.use(express.urlencoded({ extended: true }));
 3. Kiểm thử POST request với dữ liệu bị thiếu:
 
    ![](POST_request2.png)
+
+### KẾT QUẢ CỦA BÀI
+
+![](ketqua.png)
