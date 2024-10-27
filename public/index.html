@@ -21,19 +21,29 @@
 
     <!-- Mã JavaScript xử lý sự kiện khi người dùng gửi form -->
     <script>
+      // Lắng nghe sự kiện submit trên form
       document
         .getElementById("myForm")
         .addEventListener("submit", async function (e) {
+          //Ngăn hành vi mặc định của form ngăn việc tải lại trang
           e.preventDefault();
+
+          // Lấy giá trị nhập từ trường 'name'
           const name = document.getElementById("name").value;
+
+          // Gửi yêu cầu POST tới server tại route '/submit'
           const response = await fetch("/api/v1/submit", {
-            method: "POST",
+            method: "POST", // phương thức POST để gửi yêu cầu
             headers: {
-              "Content-Type": "application/json",
+              "Content-Type": "application/json", // Định dạng nội dung gửi là Json
             },
-            body: JSON.stringify({ name: name }),
+            body: JSON.stringify({ name: name }), // Chuyển đổi đối tượng chứa tên thành chuỗi Json
           });
+
+          // Nhận phản hồi từ server và chuyển đổi JSON thành đối tượng JavaScript
           const data = await response.json();
+
+          // Hiển thị thông điệp từ server trong phần id = 'response' trong mã HTML ở trên
           document.getElementById("response").textContent = data.message;
         });
     </script>
